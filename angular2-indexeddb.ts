@@ -16,7 +16,7 @@ export class AngularIndexedDB {
             let request = this.utils.indexedDB.open(this.dbWrapper.dbName, version);
             request.onsuccess = function (e) {
                 self.dbWrapper.db = request.result;
-                resolve();
+                resolve(true);
             };
 
             request.onerror = function (e) {
@@ -154,7 +154,7 @@ export class AngularIndexedDB {
                         reject(e);
                     },
                     complete: (e: Event) => {
-                        resolve();
+                        resolve(true);
                     },
                     abort: (e: Event) => {
                         reject(e);
@@ -177,7 +177,7 @@ export class AngularIndexedDB {
                         reject(e);
                     },
                     complete: (e: Event) => {
-                        resolve();
+                        resolve(true);
                     },
                     abort: (e: Event) => {
                         reject(e);
@@ -188,7 +188,7 @@ export class AngularIndexedDB {
 
             request.onsuccess = (evt: Event) => {
                 cursorCallback(evt);
-                resolve();
+                resolve(true);
             };
         });
     }
@@ -204,7 +204,7 @@ export class AngularIndexedDB {
                         reject(e);
                     },
                     complete: (e: Event) => {
-                        resolve();
+                        resolve(true);
                     },
                     abort: (e: Event) => {
                         reject(e);
@@ -212,7 +212,7 @@ export class AngularIndexedDB {
                 }),
                 objectStore = transaction.objectStore(storeName);
             objectStore.clear();
-            resolve();
+            resolve(true);
         });
     }
 

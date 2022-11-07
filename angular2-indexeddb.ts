@@ -14,20 +14,20 @@ export class AngularIndexedDB {
         return new Promise<any>((resolve, reject)=> {
             this.dbWrapper.dbVersion = version;
             let request = this.utils.indexedDB.open(this.dbWrapper.dbName, version);
-            request.onsuccess = function (e) {
+            request.onsuccess = () => {
                 self.dbWrapper.db = request.result;
                 resolve(true);
             };
 
-            request.onerror = function (e) {
+            request.onerror = (e) => {
                 reject('IndexedDB error: ' + (<any>e.target).errorCode ?
                     (<any>e.target).errorCode  + ' (' + (<any>e.target).error + ')' :
                     (<any>e.target).errorCode);
             };
 
             if (typeof upgradeCallback === "function") {
-                request.onupgradeneeded = function (e) {
-                    upgradeCallback(e, self.dbWrapper.db);
+                request.onupgradeneeded = (e) => {
+                    upgradeCallback(e, this.dbWrapper.db);
                 };
             }
         });

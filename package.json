@@ -12,7 +12,7 @@
   "description": "angular2-indexeddb is a library that wraps indexeddb database in an Angular 2 service",
   "repository": {
     "type": "git",
-    "url": "http://github.com/gilf/angular2-indexeddb.git"
+    "url": "http://github.com/jhuseinovic/angular2-indexeddb.git"
   },
   "files": [
     "angular2-indexeddb.ts",
